@@ -1,0 +1,10 @@
+<%= form_tag("/main/search", method: "post") do %>
+  <%= label_tag(:zipcode, "Please enter your zip code:") %>
+  <%= text_field_tag(:zipcode) %>
+  <%= submit_tag("Submit") %>
+<% end %>
+
+
+<% @members_of_congress.each do |member| %>
+<p><%= member.firstname + " " + member.lastname %></p>
+<% end %>
