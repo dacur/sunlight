@@ -18,18 +18,16 @@ class MainController < ApplicationController
 	end
 
 	def search_address
-		if params[:address] != nil
+		if params[:address].present?
 			@address = params[:address]
 			@lat_long = Geocoder.coordinates(@address)
-			if @lat_long
-				flash[:error] = "Please enter a valid address"
-			else
-				@lat = @lat_long[0]
-				@long = @lat_long[1]
-				@congresspeople = Sunlight::Legislator.all_for(:latitude => @lat, :longitude => @long)
-			end
+			@lat = @lat_long[0]
+			@long = @lat_long[1]
+			@congresspeople = Sunlight::Legislator.all_for(:latitude => @lat, :longitude => @long)
+			
 		else
-			#render 'main/index'
+			flash[:error] = "Please enter a valid address"
+			
 		end
 		#head :ok
 	end
