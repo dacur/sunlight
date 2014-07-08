@@ -1,3 +1,31 @@
+<div id="search_page">
+
+<h1>Search for your elected officials</h1>
+
+<p>The most accurate results will be returned if you search by your address. We do not store your information.</p>
+
+<div id = "searchbox">	
+	<%= form_tag("/main/search", method: "post") do %>
+	  <%= label_tag(:address, "Please enter your street, city, state, and zip code:") %>
+	  <br />
+	  <%= text_field_tag(:address) %>
+	  <%= submit_tag("Submit") %>
+	<% end %>
+</div>
+
+<div id = "memberlist">
+	<% if @congresspeople %>
+		<p><%=  @congresspeople[:senior_senator].title + ". " + @congresspeople[:senior_senator].firstname + " " +  @congresspeople[:senior_senator].lastname %></p>
+		<p><%=  @congresspeople[:junior_senator].title + ". " + @congresspeople[:junior_senator].firstname + " " +  @congresspeople[:junior_senator].lastname %></p>
+		<p><%=  @congresspeople[:representative].title + ". " + @congresspeople[:representative].firstname + " " +  @congresspeople[:representative].lastname %></p>
+		<p>You live in Congressional District: <%= @district.state %> - <%= @district.number %></p>
+	<% end %>
+
+	<%= link_to "Clear", main_search_path, method: "post" %>
+</div>
+
+<p>You may also search by your zip code; however, your results will not necessarily be accurate, as more than one representative may be represented in your zip code.</p>
+
 <div id = "searchbox">	
 	<%= form_tag("/main/search", method: "post") do %>
 	  <%= label_tag(:zipcode, "Please enter your zip code:") %>
@@ -7,13 +35,12 @@
 	<% end %>
 </div>
 
-
-
-
 <div id = "memberlist">
 	<% @members_of_congress.each do |member| %>
 	<p><%= member.title + ". " + member.firstname + " " + member.lastname + " (" + member.party + "," + member.district + ")" %></p>
 	<% end %>
 	<%= link_to "Clear", main_search_path, method: "post" %>
+</div>
+
 </div>
 

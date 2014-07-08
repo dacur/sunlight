@@ -11,7 +11,7 @@
 	<% if @congresspeople %>
 		<%=  @congresspeople[:senior_senator].title + ". " + @congresspeople[:senior_senator].firstname + " " +  @congresspeople[:senior_senator].lastname %>
 	<% end %>
-
+	<br />
 
 	<%= link_to "Clear", main_search_address_path, method: "post" %>
 </div>
