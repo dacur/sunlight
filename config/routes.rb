@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   get 'main/search'
   post 'main/search'
 
+  get 'main/search_address'
+  post 'main/search_address'
+
+  post 'main/search_addresses'
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

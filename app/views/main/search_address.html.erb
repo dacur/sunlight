@@ -1,0 +1,22 @@
+<div id = "searchbox">	
+	<%= form_tag("/main/search_address", method: "post") do %>
+	  <%= label_tag(:address, "Please enter your street, city, state, and zip code:") %>
+	  <br />
+	  <%= text_field_tag(:address) %>
+	  <%= submit_tag("Submit") %>
+	<% end %>
+</div>
+
+<div id = "memberlist">
+	<% if @congresspeople %>
+		<%=  @congresspeople[:senior_senator].title + ". " + @congresspeople[:senior_senator].firstname + " " +  @congresspeople[:senior_senator].lastname %>
+	<% end %>
+
+<%= @address %>
+	<%= link_to "Clear", main_search_address_path, method: "post" %>
+</div>
+
+
+
+<%#= @congresspeople %>
+

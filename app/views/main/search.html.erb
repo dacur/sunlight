@@ -1,10 +1,19 @@
-<%= form_tag("/main/search", method: "post") do %>
-  <%= label_tag(:zipcode, "Please enter your zip code:") %>
-  <%= text_field_tag(:zipcode) %>
-  <%= submit_tag("Submit") %>
-<% end %>
+<div id = "searchbox">	
+	<%= form_tag("/main/search", method: "post") do %>
+	  <%= label_tag(:zipcode, "Please enter your zip code:") %>
+	  <br />
+	  <%= text_field_tag(:zipcode) %>
+	  <%= submit_tag("Submit") %>
+	<% end %>
+</div>
 
 
-<% @members_of_congress.each do |member| %>
-<p><%= member.firstname + " " + member.lastname %></p>
-<% end %>
+
+
+<div id = "memberlist">
+	<% @members_of_congress.each do |member| %>
+	<p><%= member.title + ". " + member.firstname + " " + member.lastname + " (" + member.party + "," + member.district + ")" %></p>
+	<% end %>
+	<%= link_to "Clear", main_search_path, method: "post" %>
+</div>
+
