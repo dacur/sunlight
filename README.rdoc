@@ -1,28 +1,19 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Ruby on Rails application that makes use of the Sunlight Foundation's
+awesome API.  To learn more, go here: http://sunlightfoundation.com/api/
 
-Things you may want to cover:
+I also incorporated the Geocoder gem. Check it out: http://www.rubygeocoder.com/ 
+Right now I'm using it to translate addresses into Longitude/Latitude coordinates
+for Sunlight's API.
 
-* Ruby version
+You can check out the current status of the project here: 
+http://politicalinfo.herokuapp.com/main/search
 
-* System dependencies
+For the moment, you can perform two searches:
 
-* Configuration
+* Entering your full address (street, city, state, zip)
 
-* Database creation
+* Entering your zip code only
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The most accurate results are displayed from full address searches.
