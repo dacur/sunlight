@@ -1,0 +1,28 @@
+<div id = "money_page">
+	<div id = "searchbox">	
+		<%= form_tag("/main/money", method: "post") do %>
+		  <%= label_tag(:first_name, "Please enter the politician's first name:") %>
+		  <br />
+		  <%= text_field_tag(:first_name) %>
+		  <br />
+		  <%= label_tag(:last_name, "Please enter the politician's last name:") %>
+		  <br />
+		  <%= text_field_tag(:last_name) %>
+		  <br />
+		  <br />
+		  <%= submit_tag("Submit") %>
+		<% end %>
+		<br />
+	
+	<% if @politician == "No results were found. Please try again." %>
+		<p><%= @politician %></p>
+	<% else %>
+		<p><%= @politician[0]["name"] %></p>
+		<p><%= "$" + @politician[0]["total_received"].to_s %></p>
+	<% end %>
+		
+	<br />
+
+	<%= link_to "Clear", main_money_path, method: "post" %>
+	</div>
+</div>

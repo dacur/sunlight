@@ -5,7 +5,27 @@
 	margin: 20px;
 }
 
-#search_page {
+#search_page, .jumbotron, #money_page {
 	max-width: 700px;
 	margin: 20px;
 }
+
+#home_page, {
+	margin: 0 20%;
+}
+
+#home_button {
+	display: block;
+	margin: auto;
+}
+
+// #home_button {
+// 	display: inline-block;
+// 	float: right;
+// 	margin-right: 20%;
+// }
+
+// #button_div {
+// 	width: 50%;
+// 	float: left;
+// }

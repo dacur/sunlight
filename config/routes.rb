@@ -14,6 +14,12 @@ Rails.application.routes.draw do
   get 'main/search_address' 
   post 'main/search_address'
 
+  get 'main/money'
+  post 'main/money'
+
+  get 'main/testing'
+  post 'main/testing'
+
 
 
   # Example of regular route:
