@@ -2,12 +2,44 @@
 <html>
 <head>
   <title>Sunlight</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!-- <div class="btn-toolbar" role="toolbar">
+<div class="btn-group"> -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+	<ul class="nav nav-tabs" role="tablist">
+	
+  <li><a href="/">Home</a></li>
+  <li><a href="/">About</a></li>
+  
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      Searches<span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+    	<li><a href="/main/search">Search by Address</a></li>
+      	<li><a href="/main/search">Search by Zip Code</a></li>
+      	<li><a href="/main/money">Contribution Search</a></li>
+    </ul>
+  </li>
+  <li><a href="/">Contact Us</a></li>
+</div>
+</nav>
+  
+</ul>
+<!-- </div>
+</div> -->
+
+  
 
 <%= yield %>
 

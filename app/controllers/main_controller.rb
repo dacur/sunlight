@@ -40,7 +40,7 @@ class MainController < ApplicationController
 	    	@politician = JSON.load(open("http://transparencydata.org/api/1.0/entities.json?apikey=7b60678075d742c5848887153c965088&search=#{@first}+#{@last}&type=politician"))
 	    	if @politician.empty?
 	    		
-	    		@politician = "No results were found. Please try again."
+	    		@politician = "Enter a politician's name."
 	    	end
 
 	    # end

@@ -1,5 +1,8 @@
 <div id = "money_page">
-	<div id = "searchbox">	
+	<div id = "searchbox">
+	<h1>Search for Political Contributions</h1>
+	<p>To search for the total dollar amount that was contributed to a politician during the 
+		last election cycle, please enter his or her first and last names in the boxes below. You must spell the name correctly.</p>	
 		<%= form_tag("/main/money", method: "post") do %>
 		  <%= label_tag(:first_name, "Please enter the politician's first name:") %>
 		  <br />
@@ -14,7 +17,7 @@
 		<% end %>
 		<br />
 	
-	<% if @politician == "No results were found. Please try again." %>
+	<% if @politician == "Enter a politician's name." %>
 		<p><%= @politician %></p>
 	<% else %>
 		<p><%= @politician[0]["name"] %></p>
