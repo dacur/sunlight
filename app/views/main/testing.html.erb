@@ -1,34 +1,26 @@
 <div id = "money_page">
-	<div id = "searchbox">
-	<h1>Search for Political Contributions</h1>
-	<p>To search for the total dollar amount that was contributed to a politician during the 
-		last election cycle, please enter his or her first and last names in the boxes below. You must spell the name correctly.</p>	
-		<%= form_tag("/main/testing", method: "post") do %>
-		  <%= label_tag(:first_name, "Please enter the politician's first name:") %>
-		  <br />
-		  <%= text_field_tag(:first_name) %>
-		  <br />
-		  <%= label_tag(:last_name, "Please enter the politician's last name:") %>
-		  <br />
-		  <%= text_field_tag(:last_name) %>
-		  <br />
-		  <br />
-		  <%= submit_tag("Submit") %>
-		<% end %>
-		<br />
-	
-	<% if @politician == "Enter a politician's name." %>
-		<p><%= @politician %></p>
-	<% else %>
-		<p><%= @politician[0]["name"] %></p>
-		<p><%= "$" + @politician[0]["total_received"].to_s + " TOTAL received"%></p>
 
-		<p><%= @individuals %></p>
-		<p><%= @pacs %></p>
+<h2>Total raised by politicians in the US in 2012</h1>
+
+<%#=@top[0]["amount"] %>
+<%#=@top[1]["amount"] %>
+
+	
+<h4><%= number_to_currency(@total) %> (top 10,000 campaigns by amount raised)<h4>
+<p></p>
+<h3>Top 10 campaigns by dollars raised (2012)</h3>
+
+	<% y = 0 %>
+	<% for y in 0..9 %>
+		<p><%= (y+1).to_s + ". " + @top[y]["name"].to_s + " " + number_to_currency(@top[y]["amount"].to_i) %></p>
 	<% end %>
+
+	<h4><%= number_to_currency(@top10total).to_s + " Total for the Top 10" %>
+
+
 		
 	<br />
 
-	<%= link_to "Clear", main_testing_path, method: "post" %>
+	<%#= link_to "Clear", main_testing_path, method: "post" %>
 	</div>
 </div>
