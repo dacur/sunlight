@@ -17,3 +17,5 @@ For the moment, you can perform two searches:
 * Entering your zip code only
 
 The most accurate results are displayed from full address searches.
+
+* Update July 10, 2014: Added search by candidate name for fundraising total, and added top 10 candidates by fundraising totals, as well as total money raised by top 10,000 candidates (see http://politicalinfo.herokuapp.com/main/testing)
