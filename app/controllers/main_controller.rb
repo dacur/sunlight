@@ -33,7 +33,7 @@ class MainController < ApplicationController
 		#head :ok
 	end
 
-	def money
+	def testing
 		# if params[:first_name].present? and params[:last_name].present?
 			@first = params[:first_name]
 			@last = params[:last_name]
@@ -47,9 +47,18 @@ class MainController < ApplicationController
 
 	end
 
-	def testing
-		flash.now[:notice] = "Hello"
-		flash.clear
+	def money
+		@first = params[:first_name]
+		@last = params[:last_name]
+    	@politician = JSON.load(open("http://transparencydata.org/api/1.0/entities.json?apikey=7b60678075d742c5848887153c965088&search=#{@first}+#{@last}&type=politician"))
+	    	if @politician.empty?
+	    		@politician = "Enter a politician's name."
+	    	else
+	    		@pol_id = @politician[0]["id"]
+	    		@breakdown = JSON.load(open("http://transparencydata.com/api/1.0/aggregates/pol/#{@pol_id}/contributors/type_breakdown.json?cycle=2012&apikey=7b60678075d742c5848887153c965088"))
+		    	@individuals = "$" + @breakdown["Individuals"][1] + " from " + @breakdown["Individuals"][0] + " contributors"
+		    	@pacs = "$" + @breakdown["PACs"][1] + " from " + @breakdown["PACs"][0] + " PACs"
+	    	end
 
 	end
 

@@ -21,7 +21,10 @@
 		<p><%= @politician %></p>
 	<% else %>
 		<p><%= @politician[0]["name"] %></p>
-		<p><%= "$" + @politician[0]["total_received"].to_s %></p>
+		<p><%= "$" + @politician[0]["total_received"].to_s + " TOTAL received"%></p>
+
+		<p><%= @individuals %></p>
+		<p><%= @pacs %></p>
 	<% end %>
 		
 	<br />
