@@ -15,7 +15,7 @@
 		<p><%= (y+1).to_s + ". " + @top[y]["name"].to_s + " " + number_to_currency(@top[y]["amount"].to_i) %></p>
 	<% end %>
 
-	<h4><%= number_to_currency(@top10total).to_s + " Total for the Top 10" %>
+	<h4><%= "Total for the Top 10: " + number_to_currency(@top10total).to_s %>
 
 
 		

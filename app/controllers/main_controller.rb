@@ -44,6 +44,7 @@ class MainController < ApplicationController
 	    		@breakdown = JSON.load(open("http://transparencydata.com/api/1.0/aggregates/pol/#{@pol_id}/contributors/type_breakdown.json?cycle=2012&apikey=7b60678075d742c5848887153c965088"))
 		    	@individuals = "$" + @breakdown["Individuals"][1] + " from " + @breakdown["Individuals"][0] + " contributors"
 		    	@pacs = "$" + @breakdown["PACs"][1] + " from " + @breakdown["PACs"][0] + " PACs"
+		    	@top_contributors = JSON.load(open("http://transparencydata.com/api/1.0/aggregates/pol/#{@pol_id}/contributors.json?cycle=2012&limit=10&apikey=7b60678075d742c5848887153c965088"))
 	    	end
 
 	end
@@ -65,8 +66,13 @@ class MainController < ApplicationController
 
 	end
 
-	# http://transparencydata.com/api/1.0/aggregates/pol/4148b26f6f1c437cb50ea9ca4699417a/contributors.json?cycle=2012&limit=1&apikey=YOUR_KEY
+	def testing 
 
+		@test = JSON.load(open("http://transparencydata.com/api/1.0/aggregates/pol/4148b26f6f1c437cb50ea9ca4699417a/contributors.json?cycle=2012&limit=1&apikey=7b60678075d742c5848887153c965088"))
+
+
+	end
+	
 	# def search_address
  #     begin
  #      if params[:latitude].present? && params[:longitude].present?

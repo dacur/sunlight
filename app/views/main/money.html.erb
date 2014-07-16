@@ -22,11 +22,16 @@
 	<% if @politician == "Enter a politician's name." %>
 		<p><%= @politician %></p>
 	<% else %>
-		<p><%= @politician[0]["name"] %></p>
+		<h4><%= @politician[0]["name"] %></h4>
 		<p><%= "$" + @politician[0]["total_received"].to_s + " TOTAL received"%></p>
 
 		<p><%= @individuals %></p>
 		<p><%= @pacs %></p>
+		<h4>Top Contributors</h4>
+		<% y = 0 %>
+		<% for y in 0..9 %>
+			<p><%= (y+1).to_s + ". " + @top_contributors[y]["name"].to_s + " " + number_to_currency(@top_contributors[y]["total_amount"].to_i) %></p>
+		<% end %>
 	<% end %>
 		
 	<br />
