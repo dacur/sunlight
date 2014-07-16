@@ -68,8 +68,6 @@ class MainController < ApplicationController
 
 	def testing 
 
-		@test = JSON.load(open("http://transparencydata.com/api/1.0/aggregates/pol/4148b26f6f1c437cb50ea9ca4699417a/contributors.json?cycle=2012&limit=1&apikey=7b60678075d742c5848887153c965088"))
-
 
 	end
 	

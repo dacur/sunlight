@@ -8,7 +8,7 @@ Right now I'm using it to translate addresses into Longitude/Latitude coordinate
 for Sunlight's API.
 
 You can check out the current status of the project here: 
-http://politicalinfo.herokuapp.com/main/search
+http://politicalinfo.herokuapp.com
 
 For the moment, you can perform two searches:
 
@@ -18,4 +18,6 @@ For the moment, you can perform two searches:
 
 The most accurate results are displayed from full address searches.
 
-* Update July 10, 2014: Added search by candidate name for fundraising total, and added top 10 candidates by fundraising totals, as well as total money raised by top 10,000 candidates (see http://politicalinfo.herokuapp.com/main/testing)
+* Update July 10, 2014: Added search by candidate name for fundraising total, and added top 10 candidates by fundraising totals, as well as total money raised by top 10,000 candidates (see http://politicalinfo.herokuapp.com)
+
+* Update July 16, 2014: When searching for candidates' fundraising total, top ten contributors' names and donation totals are returned, as well.
