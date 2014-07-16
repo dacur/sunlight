@@ -36,15 +36,32 @@ class MainController < ApplicationController
 	def money
 		@first = params[:first_name]
 		@last = params[:last_name]
-    	@politician = JSON.load(open("http://transparencydata.org/api/1.0/entities.json?apikey=7b60678075d742c5848887153c965088&search=#{@first}+#{@last}&type=politician"))
-	    	if @politician.empty?
-	    		@politician = "Enter a politician's name."
-	    	else
-	    		@pol_id = @politician[0]["id"]
-	    		@breakdown = JSON.load(open("http://transparencydata.com/api/1.0/aggregates/pol/#{@pol_id}/contributors/type_breakdown.json?cycle=2012&apikey=7b60678075d742c5848887153c965088"))
-		    	@individuals = "$" + @breakdown["Individuals"][1] + " from " + @breakdown["Individuals"][0] + " contributors"
-		    	@pacs = "$" + @breakdown["PACs"][1] + " from " + @breakdown["PACs"][0] + " PACs"
-		    	@top_contributors = JSON.load(open("http://transparencydata.com/api/1.0/aggregates/pol/#{@pol_id}/contributors.json?cycle=2012&limit=10&apikey=7b60678075d742c5848887153c965088"))
+		@politician = JSON.load(open("http://transparencydata.org/api/1.0/entities.json?apikey=7b60678075d742c5848887153c965088&search=#{@first}+#{@last}&type=politician"))
+			if @politician.empty?
+				@politician = "Enter a politician's name."
+			else
+				@year = params[:year]
+				@pol_id = @politician[0]["id"]
+				@breakdown = JSON.load(open("http://transparencydata.com/api/1.0/aggregates/pol/#{@pol_id}/contributors/type_breakdown.json?cycle=#{@year}&apikey=7b60678075d742c5848887153c965088"))
+			    	if (@breakdown["Individuals"]).nil? 
+			    		@individuals_money = 0
+			    		@individuals = 0
+			    	else 
+			    		@individuals_money = (@breakdown["Individuals"][1]).to_f 
+			    		@individuals = @breakdown["Individuals"][0]
+			    	end
+			    	if (@breakdown["PACs"]).nil?
+			    		@pacs_money = 0
+			    		@pacs = 0
+			    	else
+			    		@pacs_money = (@breakdown["PACs"][1]).to_f
+			    		@pacs = @breakdown["PACs"][0]
+			    	end
+		    	#@pacs = "$" + @breakdown["PACs"][1] + " from " + @breakdown["PACs"][0] + " PACs"
+		    	#@total_money = (@breakdown["Individuals"][1]).to_f  + (@breakdown["PACs"][1]).to_f
+		    	@total_money = @individuals_money + @pacs_money
+
+		    	@top_contributors = JSON.load(open("http://transparencydata.com/api/1.0/aggregates/pol/#{@pol_id}/contributors.json?cycle=#{@year}&limit=10&apikey=7b60678075d742c5848887153c965088"))
 	    	end
 
 	end
@@ -66,10 +83,7 @@ class MainController < ApplicationController
 
 	end
 
-	def testing 
 
-
-	end
 	
 	# def search_address
  #     begin

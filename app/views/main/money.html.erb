@@ -1,49 +1,48 @@
 <div class = "container-fluid">
 	<div class = "row">
 		<div class = "col-md-6">
-		<h1>Search for Political Contributions</h1>
-		<p>To search for the total dollar amount that was contributed to a politician during the 
-			last election cycle, please enter his or her first and last names in the boxes below. You must spell the name correctly.</p>
-		<p>Contributions will also be broken down into individual vs. political action committee totals.</p>
-		<br />
-			<%= form_tag("/main/money", method: "post") do %>
-			  <%= label_tag(:first_name, "Please enter the politician's first name:") %>
-			  <br />
-			  <%= text_field_tag(:first_name) %>
-			  <br />
-			  <%= label_tag(:last_name, "Please enter the politician's last name:") %>
-			  <br />
-			  <%= text_field_tag(:last_name) %>
-			  <br />
-			  <br />
-			  <%= submit_tag("Submit") %>
-			<% end %>
+			<h1>Search for Political Contributions</h1>
+			<p>To search for the total dollar amount that was contributed to a politician during the 
+				last election cycle, please enter his or her first and last names in the boxes below. You must spell the name correctly.</p>
+			<p>Contributions will also be broken down into individual vs. political action committee totals.</p>
 			<br />
-			<%= link_to "Clear", main_money_path, method: "post" %>
+				<%= form_tag("/main/money", method: "post") do %>
+				  <%= label_tag(:first_name, "Please enter the politician's first name:") %>
+				  <br />
+				  <%= text_field_tag(:first_name) %>
+				  <br />
+				  <%= label_tag(:last_name, "Please enter the politician's last name:") %>
+				  <br />
+				  <%= text_field_tag(:last_name) %>
+				  <br />
+				  <p><strong>Please select the election cycle</strong></p>
+				  <%= select_tag(:year, options_for_select([['2014', 2014], ['2012', 2012], ['2010', 2010], ['2008', 2008]])) %>
+				  <br />
+				  <br />
+				  <%= submit_tag("Submit") %>
+				<% end %>
+				<br />
+				<%= link_to "Clear", main_money_path, method: "post" %>
 		</div>
 
 		<div class = "col-md-6">
-
 		
-		<% if @politician == "Enter a politician's name." %>
-			<br />
-			<p><%#= @politician %></p>
-		<% else %>
-			<h4><%= @politician[0]["name"] %></h4>
-			<p><%= number_to_currency(@politician[0]["total_received"].to_i) + " Total received"%></p>
+			<% if @politician == "Enter a politician's name." %>
+				<br />
+				<p><%#= @politician %></p>
+			<% else %>
+				<h3><%= @politician[0]["name"] + " for " + @year %></h3>
+				<p><%= number_to_currency(@total_money) + " Total received"%></p>
 
-			<p><%= @individuals %></p>
-			<p><%= @pacs %></p>
-			<h4>Top Contributors</h4>
-			<% y = 0 %>
-			<% for y in 0..9 %>
-				<p><%= (y+1).to_s + ". " + @top_contributors[y]["name"].to_s + " " + number_to_currency(@top_contributors[y]["total_amount"].to_i) %></p>
+				<p><%= number_to_currency(@individuals_money) + " from " + number_with_delimiter(@individuals, :delimiter => ',') + " contributors" %></p>
+				<p><%= number_to_currency(@pacs_money) + " from " + @pacs + " PACs" %></p>
+
+				<h4>Top Contributors</h4>
+				<% y = 0 %>
+				<% for y in 0..9 %>
+					<p><%= (y+1).to_s + ". " + @top_contributors[y]["name"].to_s + " " + number_to_currency(@top_contributors[y]["total_amount"].to_i) %></p>
+				<% end %>
 			<% end %>
-		<% end %>
-			
-		<br />
-
-		
 		</div>
 	</div>
 </div>
