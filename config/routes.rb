@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get 'main/money'
   post 'main/money'
 
+  get 'main/stats'
+  post 'main/stats'
+
   get 'main/testing'
   post 'main/testing'
 

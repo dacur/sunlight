@@ -48,7 +48,7 @@ class MainController < ApplicationController
 
 	end
 
-	def testing
+	def stats
 	
 	    @top = JSON.load(open("http://transparencydata.com/api/1.0/aggregates/pols/top_10000.json?cycle=2012&apikey=7b60678075d742c5848887153c965088"))
 		@total = 0
@@ -64,6 +64,8 @@ class MainController < ApplicationController
 			end
 
 	end
+
+	# http://transparencydata.com/api/1.0/aggregates/pol/4148b26f6f1c437cb50ea9ca4699417a/contributors.json?cycle=2012&limit=1&apikey=YOUR_KEY
 
 	# def search_address
  #     begin
