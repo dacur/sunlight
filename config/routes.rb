@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'main/testing'
   post 'main/testing'
 
+  get 'main/about'
 
 
   # Example of regular route:
