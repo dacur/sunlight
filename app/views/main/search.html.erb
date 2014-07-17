@@ -19,7 +19,11 @@
 		<p><%=  @congresspeople[:junior_senator].title + ". " + @congresspeople[:junior_senator].firstname + " " +  @congresspeople[:junior_senator].lastname %></p>
 		<p><%=  @congresspeople[:representative].title + ". " + @congresspeople[:representative].firstname + " " +  @congresspeople[:representative].lastname %></p>
 		<p>You live in Congressional District: <%= @district.state %> - <%= @district.number %></p>
+		<p>Your state representatives are: <%= @local_reps[0]["full_name"] + " and " + @local_reps[1]["full_name"] %></p>
+
 	<% end %>
+
+
 
 	<%= link_to "Clear", main_search_path, method: "post" %>
 </div>

@@ -25,6 +25,8 @@ class MainController < ApplicationController
 			@long = @lat_long[1]
 			@congresspeople = Sunlight::Legislator.all_for(:latitude => @lat, :longitude => @long)
 			
+			@local_reps = JSON.load(open("http://openstates.org/api/v1/legislators/geo/?apikey=7b60678075d742c5848887153c965088&lat=#{@lat}&long=#{@long}"))
+			
 		else
 			flash[:error] = "Please enter a valid address"
 			
