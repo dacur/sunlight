@@ -36,6 +36,8 @@
 
 				<p><%= number_to_currency(@individuals_money) + " from " + number_with_delimiter(@individuals, :delimiter => ',') + " contributors" %></p>
 				<p><%= number_to_currency(@pacs_money) + " from " + @pacs + " PACs" %></p>
+				<p><%= "Money from in-state contributors: " + number_to_currency(@instate) + " (" + (@local_breakdown["In-State"][0]).to_s + " contributors)" %></p>
+				<p><%= "Money from out-of-state contributors: "  + number_to_currency(@out_of_state) + " (" + (@local_breakdown["Out-of-State"][0]).to_s + " contributors)" %></p>
 
 				<h4>Top Contributors</h4>
 				<% y = 0 %>

@@ -60,7 +60,9 @@ class MainController < ApplicationController
 		    	#@pacs = "$" + @breakdown["PACs"][1] + " from " + @breakdown["PACs"][0] + " PACs"
 		    	#@total_money = (@breakdown["Individuals"][1]).to_f  + (@breakdown["PACs"][1]).to_f
 		    	@total_money = @individuals_money + @pacs_money
-
+		    	@local_breakdown = JSON.load(open("http://transparencydata.com/api/1.0/aggregates/pol/#{@pol_id}/contributors/local_breakdown.json?cycle=#{@year}&apikey=7b60678075d742c5848887153c965088"))
+		    		@instate = (@local_breakdown["In-State"][1]).to_f
+		    		@out_of_state = (@local_breakdown["Out-of-State"][1]).to_f
 		    	@top_contributors = JSON.load(open("http://transparencydata.com/api/1.0/aggregates/pol/#{@pol_id}/contributors.json?cycle=#{@year}&limit=10&apikey=7b60678075d742c5848887153c965088"))
 	    	end
 
